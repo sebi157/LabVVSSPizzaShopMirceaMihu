@@ -47,6 +47,18 @@ public class PaymentRepository {
     }
 
     public void add(Payment payment){
+        if (payment == null) {
+            throw new IllegalArgumentException("Payment cannot be null");
+        }
+        int table = payment.getTableNumber();
+        if (table < 1 || table > 8) {
+            throw new IllegalArgumentException("Invalid table number: " + table);
+        }
+        double amt = payment.getAmount();
+        if (amt <= 0) {
+            throw new IllegalArgumentException("Invalid amount: " + amt);
+        }
+
         paymentList.add(payment);
         writeAll();
     }
