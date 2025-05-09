@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import pizzashop.controller.MainGUIController;
 import pizzashop.gui.KitchenGUI;
+import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
@@ -18,6 +19,8 @@ import pizzashop.service.PizzaService;
 
 import java.util.Optional;
 import java.util.logging.Logger;
+
+//import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
 
 public class Main extends Application {
     MenuRepository repoMenu;
@@ -51,8 +54,8 @@ public class Main extends Application {
                 Optional<ButtonType> result = exitAlert.showAndWait();
                 if (result.get() == ButtonType.YES){
                     //Stage stage = (Stage) this.getScene().getWindow();
-                    System.out.println("Incasari cash: "+service.getTotalAmount(PaymentType.CASH));
-                    System.out.println("Incasari card: "+service.getTotalAmount(PaymentType.CARD));
+                    System.out.println("Incasari cash: "+service.getTotalAmountStatic(payRepo.getAll(), PaymentType.CASH));
+                    System.out.println("Incasari card: "+service.getTotalAmountStatic(payRepo.getAll(), PaymentType.CARD));
 
                     primaryStage.close();
                 }

@@ -45,7 +45,7 @@ public class OrdersGUIController {
 
     private   List<String> orderList = FXCollections.observableArrayList();
     private List<Double> orderPaymentList = FXCollections.observableArrayList();
-    public static double getTotalAmount() {
+    public static double getTotalAmountStatic() {
         return totalAmount;
     }
     public void setTotalAmount(double totalAmount) {
@@ -96,13 +96,13 @@ public class OrdersGUIController {
                     .map(order -> order.getQuantity()* order.getPrice())
                     .collect(Collectors.toList());
             setTotalAmount(orderPaymentList.stream().mapToDouble(e->e.doubleValue()).sum());
-            orderStatus.setText("Total amount: " + getTotalAmount());
+            orderStatus.setText("Total amount: " + getTotalAmountStatic());
             System.out.println("--------------------------");
             System.out.println("Table: " + tableNumber);
-            System.out.println("Total: " + getTotalAmount());
+            System.out.println("Total: " + getTotalAmountStatic());
             System.out.println("--------------------------");
             PaymentAlert pay = new PaymentAlert(service);
-            pay.showPaymentAlert(tableNumber, this.getTotalAmount());
+            pay.showPaymentAlert(tableNumber, this.getTotalAmountStatic());
         });
     }
 
