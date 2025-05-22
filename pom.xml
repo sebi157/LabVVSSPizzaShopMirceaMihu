@@ -99,10 +99,6 @@ Maven defaults (may be moved to parent pom) -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
-        <configuration>
-          <!-- forţează compilarea la bytecode 11 -->
-          <release>${maven.compiler.release}</release>
-        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
